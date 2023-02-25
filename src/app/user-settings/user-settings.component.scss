@@ -1,0 +1,58 @@
+@import 'src/modules/_vars';
+
+.main-content {
+    padding: unset;
+
+    mat-card {
+        width: 250px;
+        background-color: $bgClr-input;
+        padding: unset;
+        position: absolute;
+        top: 55px;
+        right: 10px;
+        border-radius: $br-primary;
+        padding: $padding-message-box;
+
+        .user-info-box {
+            display: flex;
+            align-items: center;
+            color: $txt-clr-primary;
+            gap: 15px;
+
+            mat-card-title {
+                font-size: $fs-m;
+                margin: unset;
+            }
+
+            .user-info {
+                display: flex;
+                flex-direction: column;
+
+                .online-status {
+                    display: flex;
+                    align-items: center;
+                    gap: $gap-primary
+                }
+
+                .dot-sidenav {
+                    position: unset;
+                    outline: $bgClr-input;
+                }
+            }
+        }
+
+
+        .btn-container {
+            justify-content: flex-end;
+            button {
+                background-color: $bgClr-primary;
+                color: $txt-clr-secondary;
+
+                &:hover {
+                    background-color: $txt-clr-link;
+                }
+            }
+        }
+    }
+
+}

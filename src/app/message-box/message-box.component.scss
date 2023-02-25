@@ -1,0 +1,40 @@
+@import 'src/modules/_vars';
+
+.text-box {
+    position: relative;
+    width: 100%;
+    height: 96%;
+    background-color: $bgClr-newChat;
+    border-radius: $br-secondary;
+
+    .editor {
+        width: 100%;
+        height: 75px;
+    }
+
+    button {
+        position: absolute;
+        bottom: 11px;
+        right: 7.5px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-color: $btn-clr-green;
+        min-width: unset !important;
+        padding: 0 12px !important;
+
+        &:hover {
+            filter: brightness(1.2);
+        }
+
+        &:disabled {
+            background-color: unset;
+            cursor: not-allowed;
+        }
+    }
+
+    mat-icon {
+        color: $txt-clr-primary;
+        transition: $transition-hover;
+    }
+}

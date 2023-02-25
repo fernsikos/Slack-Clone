@@ -1,0 +1,98 @@
+@import 'src/modules/_vars';
+
+.main-container {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    .channels-content-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .scroll-box {
+            .welcome-card {
+                display: flex;
+                padding: $padding-message-box;
+                background-color: transparent;
+                color: $txt-clr-h2;
+
+                .leftframe {
+                    span {
+                        background-color: $txt-clr-primary;
+                        border-radius: $br-primary;
+                        padding-left: 2px;
+                        color: $bgClr-primary;
+                        height: 30px;
+                        width: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-items: center;
+                        font-size: $fs-xxl;
+                    }
+                }
+
+                .welcome-content {
+                    margin-left: 24px;
+
+                    .enterMessage {
+                        margin: 10px 0;
+                        padding: 10px;
+                        font-size: $fs-regular;
+                        background-color: $bgClr-highlight;
+                        border-radius: $br-primary;
+                        width: fit-content;
+                    }
+                }
+            }
+
+            .message-container {
+                &:hover {
+                    background-color: $bgClr-newChat;
+
+                    .option-box {
+                        opacity: 1;
+                    }
+                }
+
+                .option-box {
+                    display: flex;
+                    align-items: center;
+                    position: absolute;
+                    right: 16px;
+                    top: -20px;
+                    border-radius: $br-secondary;
+                    background-color: $bgClr-primary;
+                    border: $border-primary;
+                    opacity: 0;
+
+                    .option {
+                        padding: 5px;
+                        display: flex;
+
+                        &:hover {
+                            background-color: $bgClr-newChat;
+                            border-radius: $br-secondary;
+                            cursor: pointer;
+                        }
+
+                        mat-icon {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: $txt-clr-primary;
+                            font-size: $fs-l;
+
+                            &:hover {
+                                color: $txt-clr-secondary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

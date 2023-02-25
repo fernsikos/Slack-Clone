@@ -1,0 +1,29 @@
+<app-searchbar #searchbar></app-searchbar>
+<mat-drawer-container class="content-container" autosize>
+  <mat-drawer
+    #drawer
+    class="sidenav"
+    [opened]="this.toggler.open"
+    [mode]="this.toggler.type"
+  >
+    <div class="workspace heading">
+      <h1>Slack-clone</h1>
+      <div class="new-chat-container">
+        <mat-icon
+          class="material-symbols-outlined"
+          routerLink="/home/create-chat"
+          >edit_square</mat-icon
+        >
+      </div>
+    </div>
+
+    <app-nav-tree></app-nav-tree>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+
+<!-- 
+  Todos:
+  searchbar ( no function right now) => Phil
+  code sauber schreiben
+ -->

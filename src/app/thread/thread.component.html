@@ -1,0 +1,98 @@
+<div class="thread-main-container">
+  <div class="heading">
+    <div class="heading-wrapper">
+      <h2>Thread</h2>
+      <span class="channel-name">{{
+        this.channelService.currentChannel.channelName
+      }}</span>
+    </div>
+    <mat-icon class="close" (click)="channelService.closeThread()"
+      >close</mat-icon
+    >
+  </div>
+
+  <div class="thread-content-container">
+    <div class="message">
+      <mat-card
+        *ngIf="this.channelService.threadMessage"
+        class="message-container"
+      >
+        <div class="img-container">
+          <img
+            class="profile-img"
+            src="assets/img/slack-big.svg"
+            alt="profile-img"
+          />
+        </div>
+        <div class="message-content">
+          <div class="message-header">
+            <div>
+              <strong>{{
+                this.channelService.threadMessage?.author | titlecase
+              }}</strong>
+            </div>
+            <div>
+              {{ this.channelService.threadMessage?.timestamp }}
+            </div>
+          </div>
+          <span [innerHTML]="this.channelService.threadMessage?.msg"></span>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="scroll-box">
+      <div class="answer-wrapper">
+        <div class="answer" *ngIf="this.channelService.allThreadComments != 0">
+          <span
+            >{{
+              this.channelService.allThreadComments.length
+            }}
+            Answer<ng-container
+              *ngIf="this.channelService.allThreadComments.length > 1"
+              >s</ng-container
+            ></span
+          >
+        </div>
+        <div class="devider"></div>
+      </div>
+      <mat-card
+        *ngFor="
+          let comment of this.channelService.allThreadComments;
+          let i = index
+        "
+        class="message-container"
+      >
+        <div class="img-container">
+          <img
+            class="profile-img"
+            src="assets/img/slack-big.svg"
+            alt="profile-img"
+          />
+        </div>
+        <div class="message-content">
+          <div class="message-header">
+            <div>
+              <strong>{{ comment.author | titlecase }}</strong>
+            </div>
+            <div>
+              {{ comment.timestamp }}
+            </div>
+          </div>
+          <span [innerHTML]="comment.comment"> </span>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <app-message-box
+    class="message-box"
+    [textBoxPath]="textBoxPath"
+  ></app-message-box>
+  <div *ngIf="this.channelService.threadLoading" id="loading-container">
+    <div class="lds-ring" id="loading-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>

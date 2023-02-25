@@ -1,0 +1,78 @@
+@import 'src/modules/_vars';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 46px);
+}
+
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: $bgClr-primary;
+    color: $txt-clr-primary;
+
+    mat-toolbar-row {
+        border: $border-primary;
+        height: $height-headers;
+        font-size: $fs-l;
+
+        input {
+            background-color: inherit;
+            outline: none;
+            border: none;
+            width: 100%;
+            padding: $padding-sidenav-header;
+            color:  $txt-clr-secondary;
+            caret-color: $txt-clr-secondary;
+        }
+    }
+}
+
+.last-messages {
+    height: 100%;
+    padding: 16px;
+    background-color: $bgClr-newChat;
+
+
+    mat-card {
+        background-color: $bgClr-primary;
+        color: $txt-clr-primary;
+        border-radius: $br-primary;
+        transition: $transition-hover;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $bgClr-newChat;
+        }
+
+        mat-card-content {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.selectedUser-container {
+    display: flex;
+    gap: $gap-primary;
+    
+    .selectedUser {
+        display: flex;
+        color: $txt-clr-primary;
+        align-items: center;
+        gap: 5px;
+        background-color: $bgClr-chatList;
+        border-radius: $br-primary;
+        
+        mat-icon {
+            cursor: pointer;
+        }
+    }
+}
+
+.new-chat-info {
+    padding: $padding-message-box;
+    font-size: $fs-l;
+}

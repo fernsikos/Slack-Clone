@@ -1,0 +1,688 @@
+@import 'src/modules/_vars';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    caret-color: $txt-clr-primary;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: $fs-regular;
+}
+
+.cdk-global-scrollblock {
+    overflow-y: unset;
+}
+
+.custom-dialog-container .mat-dialog-container {
+    padding: unset;
+}
+
+mat-option {
+    line-height: unset !important;
+    height: unset !important;
+    padding: unset !important;
+    overflow: unset !important;
+
+    .mat-option-text {
+        overflow: unset !important;
+    }
+}
+
+.mat-option .mat-icon {
+    margin-right: 0 !important;
+}
+
+#emoji-palette {
+    top: -185px !important;
+    left: 0px !important;
+    height: 140px;
+    max-width: 100% !important;
+    background-color: $bgClr-primary !important;
+    border-radius: $br-primary !important;
+    border: $border-primary !important;
+    overflow: hidden;
+
+    #tab-panel {
+        max-height: 100px;
+    }
+}
+
+#tab-toolbar,
+#tab-panel {
+    background-color: $bgClr-primary !important;
+}
+
+.ql-toolbar.ql-snow {
+    border-top-left-radius: $br-primary !important;
+    border-top-right-radius: $br-primary !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-color: $border-clr-input !important;
+    transition: $transition-hover;
+
+
+    .ql-formats {
+        margin: unset !important;
+        border-left: $border-primary;
+
+        &:not(:last-child, :first-child) {
+            padding: 0 7.5px;
+        }
+
+        &:first-child {
+            padding-right: 7.5px;
+            border-left: unset;
+        }
+
+        &:last-child {
+            padding-left: 7.5px;
+        }
+    }
+}
+
+.ql-formats button {
+    position: relative
+}
+
+.ql-formats button:hover:after {
+    $width: 50px;
+    position: absolute;
+    left: calc(($width - $padding-message-box-comments)/2 * -1);
+    bottom: 150%;
+    min-width: $width;
+    background: $bgClr-secondary;
+    color: $txt-clr-h2;
+    font-weight: 700;
+    padding: $padding-sidenav-header;
+    border: $border-secondary;
+    border-radius: $br-primary;
+    z-index: 1;
+}
+
+.ql-bold:hover:after {
+    content: 'Bold';
+}
+
+.ql-italic:hover:after {
+    content: 'Italic';
+}
+
+.ql-underline:hover:after {
+    content: 'Underline';
+}
+
+.ql-strike:hover:after {
+    content: 'Strike';
+}
+
+.ql-blockquote:hover:after {
+    content: 'Blockquote';
+}
+
+.ql-code-block:hover:after {
+    content: 'Code-Block';
+}
+
+.ql-list[value='ordered']:hover:after {
+    content: 'Ordered list';
+}
+
+.ql-list[value='bullet']:hover:after {
+    content: 'Bullet list';
+}
+
+.ql-image:hover:after {
+    content: 'Image upload';
+}
+
+.ql-emoji:hover:after {
+    content: 'Emojis';
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow .ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+.ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+    stroke: $txt-clr-secondary !important;
+}
+
+.ql-snow.ql-toolbar button:hover,
+.ql-snow .ql-toolbar button:hover,
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar button.ql-active,
+.ql-snow.ql-toolbar .ql-picker-label:hover,
+.ql-snow .ql-toolbar .ql-picker-label:hover,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active,
+.ql-snow.ql-toolbar .ql-picker-item:hover,
+.ql-snow .ql-toolbar .ql-picker-item:hover,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+    color: $txt-clr-secondary !important;
+    background-color: $bgClr-hover;
+    border-radius: $br-primary;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow .ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill,
+.ql-snow .ql-toolbar button.ql-active .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+.ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+    fill: $txt-clr-secondary !important;
+}
+
+.ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {
+    padding-right: 25px;
+}
+
+
+.ql-container.ql-snow {
+    border-bottom-left-radius: $br-primary;
+    border-bottom-right-radius: $br-primary;
+    border-color: $border-clr-input !important;
+    transition: $transition-hover;
+}
+
+.ql-container.ql-snow .ql-editor::before {
+    color: $txt-clr-texteditor-blur;
+    font-style: normal !important;
+    transition: $transition-hover;
+}
+
+.ql-container.ql-snow .ql-editor:focus {
+    &::before {
+        color: $txt-clr-primary;
+    }
+}
+
+
+
+pre {
+    border: $border-secondary;
+    border-radius: $br-primary;
+    background-color: $bgClr-newChat;
+    color: $txt-clr-new;
+    padding: 0 5px;
+}
+
+/* 
+    Styling for the status of the user
+*/
+
+
+.dot-nav {
+    outline: 4px solid $bgClr-secondary;
+    position: absolute;
+    bottom: -1.5px;
+    right: -1.5px;
+    border-radius: 100%;
+    height: 10px;
+    aspect-ratio: 1;
+
+}
+
+.dot-sidenav {
+    outline: 4px solid $bgClr-primary;
+    position: absolute;
+    bottom: -1.5px;
+    right: -1.5px;
+    border-radius: 100%;
+    height: 10px;
+    aspect-ratio: 1;
+}
+
+.online {
+    background-color: $online;
+}
+
+.absent {
+    background-color: $bgClr-primary;
+    border: 2.5px solid $absent;
+}
+
+.img-container {
+    position: relative;
+    height: $size-profile-img;
+    aspect-ratio: 1;
+    background-color: $bgClr-start;
+    border-radius: $br-primary;
+
+    .profile-img {
+        height: inherit;
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+
+}
+
+.heading {
+    min-height: $height-headers !important;
+    max-height: $height-headers !important;
+    display: flex;
+    align-items: center;
+    gap: $gap-primary;
+    padding: $padding-sidenav-header;
+    border-bottom: $border-primary;
+    font-size: $fs-l;
+}
+
+.scroll-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $border-clr;
+}
+
+.editBg {
+    background: $bgClr-highlight !important;
+}
+
+.answer-wrapper {
+    display: flex;
+    align-items: center;
+
+    .answer {
+        display: flex;
+        font-size: $fs-m;
+        font-weight: 500;
+        white-space: nowrap;
+        padding: $padding-answer;
+    }
+
+    .devider {
+        border-top: 1px solid #313438;
+        width: 100%;
+        height: 1px;
+    }
+}
+
+.message-wrapper {
+    display: flex;
+    gap: $gap-primary;
+
+    .edited {
+        font-weight: 100;
+        font-size: $fs-s;
+        color: $txt-clr-primary;
+    }
+}
+
+.message-box {
+    padding: $padding-message-box;
+}
+
+.message-container {
+    display: flex !important;
+    gap: $gap-primary;
+    position: relative;
+    background-color: $bgClr-primary;
+    color: #D1D2D3;
+    box-shadow: unset !important;
+    border-radius: unset !important;
+
+    &:hover {
+        background-color: $bgClr-newChat;
+
+        .option-box {
+            opacity: 1;
+        }
+    }
+
+    .option-box {
+        opacity: 0;
+
+        display: flex;
+        align-items: center;
+        position: absolute;
+
+        right: 16px;
+        top: -20px;
+
+        background-color: $bgClr-primary;
+        border: $border-primary;
+        border-radius: $br-secondary;
+
+        .option {
+            padding: $padding-message-box-comments;
+
+
+            .btn {
+                background-color: transparent;
+                color: $txt-clr-primary;
+                border: none;
+                border-radius: $br-primary;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $txt-clr-link;
+                    color: $txt-clr-secondary;
+
+                    &:disabled {
+                        background-color: $bgClr-primary;
+                        color: $txt-clr-primary;
+                        cursor: not-allowed;
+                    }
+                }
+
+            }
+
+            .delete {
+                &:hover {
+                    background-color: $txt-clr-delete;
+                    color: $txt-clr-secondary;
+
+                    &:disabled {
+                        background-color: $bgClr-primary;
+                        color: $txt-clr-primary;
+                        cursor: not-allowed;
+                    }
+                }
+            }
+
+
+            mat-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: $fs-l;
+                line-height: unset;
+            }
+
+        }
+    }
+
+    .message-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .message-header {
+            display: flex;
+            gap: $gap-primary;
+        }
+
+        span>p {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+
+            img {
+                max-width: 100%;
+                max-height: 330px;
+            }
+        }
+
+        .comments-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: $padding-message-box-comments;
+            border: 1px solid transparent;
+            font-size: $fs-s;
+            transition: $transition-hover;
+
+            &:hover {
+                background-color: $bgClr-primary;
+                border: 1px solid $border-clr-input;
+                border-radius: $br-primary;
+            }
+
+            &:hover .hover-container .open-thread-info {
+                opacity: 1;
+            }
+
+            &:hover .arrow {
+                opacity: 1;
+            }
+
+            .hover-container {
+                display: flex;
+                gap: $gap-primary;
+
+                .open-thread-link {
+                    cursor: pointer;
+                    color: $txt-clr-link;
+                    font-size: inherit;
+
+                    &:hover {
+                        text-decoration: underline;
+                        filter: brightness(1.2);
+
+                    }
+                }
+
+
+                .open-thread-info {
+                    filter: brightness(0.7);
+                    cursor: default;
+                    opacity: 0;
+                }
+            }
+
+            .arrow {
+                opacity: 0;
+                height: $fs-m;
+                width: $fs-m;
+                font-size: $fs-m;
+                filter: brightness(0.7);
+            }
+        }
+    }
+}
+
+.add-channel mat-dialog-container {
+    background-color: $bgClr-newChat;
+    color: $txt-clr-primary;
+    border-radius: $br-secondary;
+
+    h1 {
+        color: $txt-clr-h1;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: $border-clr-input;
+    }
+
+    input.mat-input-element {
+        color: $txt-clr-primary;
+
+        &::placeholder {
+            color: $txt-clr-primary;
+        }
+    }
+
+    .mat-button {
+        &:hover {
+            background-color: #363b41;
+            transition: $transition-hover;
+        }
+    }
+}
+
+.delete-message mat-dialog-container {
+    background-color: $bgClr-newChat;
+    color: $txt-clr-primary;
+    border-radius: $br-secondary;
+
+    h1 {
+        color: $txt-clr-h1;
+    }
+}
+
+.sidenav-shrink {
+    transform: scale(0.7);
+}
+
+.mat-list-item-content {
+    padding: 0 !important;
+}
+
+.mat-toolbar-multiple-rows {
+    min-height: unset !important;
+}
+
+//Scollbar Styling /* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ABABAD;
+    -webkit-border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #cacacc;
+
+}
+
+/* loading animation */
+#loading-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #D1D2D3;
+    ;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #D1D2D3 transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.del-menu {
+    position: absolute;
+    right: 50px;
+    top: -45px;
+    background-color: $bgClr-newChat;
+    border: $border-primary;
+    min-height: unset !important;
+}
+
+
+
+.mat-autocomplete-panel {
+    background-color: $bgClr-primary;
+
+
+    .mat-option {
+        color: $txt-clr-primary;
+
+        &:hover {
+            background: $txt-clr-link;
+            color: $txt-clr-secondary;
+        }
+    }
+}

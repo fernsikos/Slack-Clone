@@ -1,0 +1,62 @@
+@import 'src/modules/_vars';
+
+.dialog-container{
+    max-width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $bgClr-newChat;
+    border-radius: $br-primary;
+
+    .top-container {
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            h1{
+                font-size: $fs-xxl;
+            }
+
+            mat-icon {
+                cursor: pointer;
+            }
+        }
+    }
+
+
+
+    .btn-container {
+        justify-content: end;
+
+        button{
+            background-color: $bgClr-input;
+            color: #B7B8B9;
+            border-radius: 5px;
+
+            &:disabled {
+                filter: brightness(0.6);
+            }
+        }
+    } 
+
+    mat-form-field{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width:450px) {
+    .dialog-container {
+        .top-container {
+            font-size: $fs-s;
+
+            h1 {
+                font-size: $fs-xl;
+            }
+        }
+    }
+}

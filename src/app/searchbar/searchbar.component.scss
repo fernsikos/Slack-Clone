@@ -1,0 +1,80 @@
+@import 'src/modules/_vars';
+
+.mat-toolbar-single-row {
+    height: $height-searchbar !important;
+}
+
+mat-toolbar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: $bgClr-secondary;
+    color: $txt-clr-secondary;
+
+    .searchbar-container {
+        display: flex;
+        align-items: center;
+
+        .searchbar {
+            width: clamp(170px, 55vw, 500px);
+            height: 30px;
+            border-radius: 5px;
+            outline: none;
+            padding: 0 8px;
+            background-color: $bgClr-input;
+            color: $txt-clr-secondary;
+            border: 1px solid $border-clr-input;
+
+            &::placeholder {
+                /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: $txt-clr-primary;
+                opacity: 1;
+                /* Firefox */
+            }
+        }
+    }
+
+
+    .settings {
+        position: absolute;
+        right: 15px;
+        display: flex;
+        justify-self: flex-end;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 40
+        }
+
+        .img-container-settings {
+            position: relative;
+            height: $size-profile-img-settings;
+            aspect-ratio: 1;
+        
+            .profile-img-settings {
+                height: inherit;
+                aspect-ratio: 1;
+                object-fit: cover;
+                border-radius: $br-primary;
+            }
+        
+        }
+    }
+
+    .toggle-btn {
+        position: absolute;
+        left: 15px;
+        transition: all 0.35s ease-in-out;
+    }
+
+    .rotate {
+        rotate: 180deg;
+        transition: all 0.35s ease-in-out;
+    }
+}

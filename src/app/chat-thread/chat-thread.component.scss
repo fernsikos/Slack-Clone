@@ -1,0 +1,76 @@
+@import 'src/modules/_vars';
+
+:host {
+    border-left: $border-primary;
+}
+
+.thread-main-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: $tread-width;
+    max-height: 100%;
+
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .heading-wrapper {
+
+            h2 {
+                margin: unset;
+            }
+
+            display: flex;
+            align-items: center;
+            gap: $gap-primary;
+        }
+
+        .channel-name {
+            font-size: $fs-m;
+            font-weight: 300;
+        }
+
+        .close {
+            cursor: pointer;
+        }
+    }
+
+    .thread-content-container {
+        height: 100%;
+        overflow: hidden;
+
+
+        .scroll-box {
+            max-height: calc(100vh - 332px);
+
+            .comment-container {
+                background-color: $bgClr-primary;
+                color: $txt-clr-h2;
+                display: flex !important;
+                gap: $gap-comment;
+                border-bottom: $border-primary;
+
+                .comment-content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: $gap-primary;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:900px) {
+    :host {
+        position: absolute;
+        background-color: $bgClr-primary;
+        inset: 0;
+    }
+
+    .thread-main-container {
+        width: unset;   
+    }
+}

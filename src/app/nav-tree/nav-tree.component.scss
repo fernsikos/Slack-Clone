@@ -1,0 +1,115 @@
+@import 'src/modules/_vars';
+$inner-size: 18px;
+
+:host {
+    background-color: $bgClr-primary;
+    display: flex;
+    flex-direction: column;
+
+    mat-selection-list {        
+        margin: 10px 0;
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $padding-sidenav-content;
+
+            .headline {
+                display: flex;
+                align-items: center;
+                gap: $gap-primary;
+
+                h3 {
+                    margin: 0;
+                }
+
+                mat-icon {
+                    border-radius: $br-primary;
+                    transition: $transition-hover;
+
+                    &:hover {
+                        background-color: $bgClr-secondary;
+                    }
+                }
+            }
+
+            .icon-hover-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: $icon-size;
+                width: $icon-size;
+                border-radius: $br-primary;
+                transition: $transition-hover;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $bgClr-secondary;
+                }
+            }
+
+        }
+
+        mat-list-item {
+            height: 30px !important;
+            color: $txt-clr-primary;
+            transition: $transition-hover;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $bgClr-secondary;
+            }
+            .listItem {
+                display: flex;
+                justify-content: space-between;
+                gap: $gap-primary;
+                padding: $padding-sidenav-content;
+                font-size: $fs-m;
+                
+                .content-container {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+
+                .close {
+                    align-self: center;                   
+                }
+            }
+
+            .w-100 {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.addItem {
+    display: flex;
+    align-items: center;
+    gap: $gap-primary;
+    padding: $padding-sidenav-content;
+    font-size: $fs-m;
+}
+
+.material-icons {
+    font-size: $inner-size;
+    height: $inner-size;
+    width: $inner-size;
+}
+
+.hashtag {
+    height: $icon-size;
+    width: $icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight {
+    color: white !important;
+    transition: color 0ms ease;
+    transition-delay: 500ms;
+}

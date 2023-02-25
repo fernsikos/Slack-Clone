@@ -1,0 +1,153 @@
+<div class="main-container">
+  <div class="channels-content-container">
+    <div class="heading">
+      # {{ this.channelService.currentChannel?.channelName }}
+    </div>
+    <div class="scroll-box" #scrollBox>
+      <mat-card class="welcome-card">
+        <div class="leftframe">
+          <span class="material-symbols-outlined"> tag </span>
+        </div>
+        <mat-card-content class="welcome-content">
+          <span
+            >Thats the beginning of this channel
+            <span class="highlight">
+              <strong>
+                {{ this.channelService.currentChannel?.channelName }}
+              </strong>
+            </span> </span
+          ><br />
+          <span
+            >This Channel was created at:
+            {{ this.channelService.currentChannel?.created }} </span
+          ><br />
+          <span
+            >Channeldescription:
+            <span class="highlight">
+              <strong>
+                {{ this.channelService.currentChannel?.channelDescription }}
+              </strong>
+            </span>
+          </span>
+
+          <div
+            class="enterMessage"
+            *ngIf="this.channelService.allMessages.length == 0"
+          >
+            Please enter the first messages for this channel
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card
+        class="message-container"
+        *ngFor="
+          let message of channelService.currentFilteredMessages;
+          let i = index;
+          let last = last
+        "
+        [class.border-bottom]="!last"
+        [class.editBg]="channelService.msgToEdit == message"
+      >
+        <div class="option-box">
+          <div class="option">
+            <button class="btn" (click)="channelService.openThread(message.id)">
+              <mat-icon
+                matTooltip="Reply in thread"
+                [matTooltipPosition]="'above'"
+                [matTooltipShowDelay]="800"
+              >
+                comment
+              </mat-icon>
+            </button>
+          </div>
+          <div class="option">
+            <button
+              class="btn edit"
+              [disabled]="userService.currentUser?.userName != message.author"
+              (click)="changePath(message)"
+            >
+              <mat-icon
+                matTooltip="Edit message"
+                [matTooltipPosition]="'above'"
+                [matTooltipShowDelay]="800"
+              >
+                edit
+              </mat-icon>
+            </button>
+          </div>
+          <div class="option">
+            <button
+              class="btn delete"
+              [disabled]="userService.currentUser?.userName != message.author"
+              (click)="deleteDialogService.openDeleteMessageDialog(message)"
+            >
+              <mat-icon
+                matTooltip="Delete Message"
+                [matTooltipPosition]="'above'"
+                [matTooltipShowDelay]="800"
+              >
+                delete
+              </mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="img-container">
+          <img
+            class="profile-img"
+            src="assets/img/slack-big.svg"
+            alt="profile-img"
+          />
+        </div>
+        <div class="message-content">
+          <div class="message-header">
+            <div>
+              <strong>{{ message.author | titlecase }}</strong>
+            </div>
+            <div>
+              {{ message.timestamp }}
+            </div>
+          </div>
+          <div
+            class="message-wrapper"
+            *ngIf="channelService.msgToEdit != message"
+          >
+            <span [innerHTML]="message.msg | sanitizeHtml"></span>
+            <div class="edited" *ngIf="message.edit">(edited)</div>
+          </div>
+          <div class="comments-container" *ngIf="message.comments">
+            <div class="hover-container">
+              <span
+                class="open-thread-link"
+                (click)="channelService.openThread(message.id)"
+                >{{ message.comments }} Answer<ng-container
+                  *ngIf="message.comments > 1"
+                  >s</ng-container
+                ></span
+              >
+              <span class="open-thread-info">Show thread</span>
+            </div>
+            <mat-icon class="arrow">navigate_next</mat-icon>
+          </div>
+          <div class="phils-div-box-zum-stylen-des-editors">
+            <app-message-box
+              *ngIf="this.channelService.msgToEdit == message"
+              [textBoxPath]="textBoxPathEdit"
+            ></app-message-box>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="message-box">
+      <app-message-box [textBoxPath]="textBoxPath"></app-message-box>
+    </div>
+    <div *ngIf="this.channelService.channelLoading" id="loading-container">
+      <div class="lds-ring" id="loading-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <app-thread *ngIf="this.channelService.threadOpen"></app-thread>
+</div>

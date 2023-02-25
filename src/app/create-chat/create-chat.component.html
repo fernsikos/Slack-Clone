@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <!-- New solution for toggle sidenav -->
+    <!-- <button mat-icon-button class="example-icon" (click)="toggler.toggleNav()" *ngIf="viewportWidth">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <span>Direct message</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <span>To: </span>
+    <div class="selectedUser-container">
+      <div class="selectedUser" *ngFor="let selectedUser of chatService.selectedUserList; let i = index">
+        <div class="img-container sidenav-shrink">
+          <img class="profile-img" src="assets/img/slack-big.svg" alt="profile-img" />
+        </div>
+        <span #user[i]>
+          {{ selectedUser.userName }}
+        </span>
+        <mat-icon (click)="chatService.spliceUser(i)">close</mat-icon>
+      </div>
+    </div>
+    <input type="text" (ngModelChange)="searchUser($event)" [matAutocomplete]="searchedUsers" [(ngModel)]="value"
+      *ngIf="chatService.selectedUserList.length < 3" #usersField placeholder="@someone or someone@some.one" />
+    <!-- autofocus -->
+    <mat-autocomplete #searchedUsers="matAutocomplete">
+      <div *ngIf="value !== ''">
+        <div *ngFor="let user of userService.users">
+          <mat-option *ngIf="
+              user.userName.toLowerCase().includes(chatService.foundedUsers) &&
+              user.userName.toLowerCase() !== 'guest'
+            " (click)="chatService.setToChatList(user)">
+            <span>
+              {{ user["userName"] }}
+            </span>
+          </mat-option>
+        </div>
+      </div>
+    </mat-autocomplete>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="texteditor-container">
+  <div class="new-chat-info">
+    <span>Select user for chat</span>
+    <ng-container *ngIf="chatService.selectedUserList.length > 0">
+      <span> between you and </span>
+      <span *ngFor="
+          let chatMembers of chatService.selectedUserList;
+          let last = last
+        ">
+        <span>{{ chatMembers.userName | lowercase }}</span>
+        <ng-container *ngIf="!last">, </ng-container>
+      </span>
+    </ng-container>
+  </div>
+  <div class="message-box">
+    <app-message-box *ngIf="chatService.selectedUserList.length > 0" [textBoxPath]="textBoxPath"></app-message-box>
+  </div>
+</div>
